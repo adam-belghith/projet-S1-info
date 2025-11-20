@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+
+    <h1>Stats:</h1>
+    {% if nbrow %}
+      <p>#{{nbrow}} in database</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('home') }}">Back</a></p>
+  </body>
+</html>

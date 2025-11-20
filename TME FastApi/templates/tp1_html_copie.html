@@ -1,0 +1,178 @@
+<!---------EXERCICE 1/2/3/4--------------->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>Exemple de formulaire</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <!-- Titre du formulaire -->
+  <p>Formulaire d'inscription</p>
+  <form name="formulaire" method="post" action="https://webia.lip6.fr/~muratetm/diu/Form_data.php" target="_blank">
+    <!---------------------------------------------->
+    <!-- Partie 1 : Renseignements administratifs -->
+    <!---------------------------------------------->
+    <p>Renseignements administratifs</p>
+    <!-- Nom -->
+    <div>
+      <label for="Nom">Nom&nbsp;</label>
+      <input name="Nom" size="50" maxlength="40" type="text">
+    </div>
+    <!-------------------------------------->
+    <!-- Partie 2 : Options d'inscription -->
+    <!-------------------------------------->
+    <div>
+      <label for="Prénom">Prénom&nbsp;</label>
+      <input name="Prénom" size="50" maxlenght="40" type="text">
+    </div>
+    <div>
+      <label for="Email">Email&nbsp;</label>
+      <input name="Email" size="50" maxlenght="40" type="text">
+    </div>
+    <p>
+      Option d'inscription
+    </p>
+    <div>
+      <label for="Présence au déjeuner">Présence au déjeuner&nbsp;</label>
+      <select name="Présence au déjeuner">
+        <option value="non">Non</option>
+        <option value="oui">Oui</option>
+      </select>
+    </div>
+    <div>
+      <label for="Merci d'indiquer vos restrictions alimentaires">Merci d'indiquer vos restrictions alimentaires&nbsp;</label>
+      <input name="Merci d'indiquer vos restrictions alimentaires" size="50" maxlenght="40" type="text">
+    </div>
+
+    <!--------------------------->
+    <!-- Partie 3 : Validation -->
+    <!--------------------------->
+    <input value="Valider l'inscription" type="submit">
+  </form>
+</body>
+
+</html>
+
+<!---------EXERCICE 5/6--------------->
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Exemple de formulaire</title>
+		<meta charset="utf-8">
+    <script src="Form_scripts.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<!-- Titre du formulaire -->
+		<p>Formulaire d'inscription</p>
+
+		<form name="formulaire" method="get" action="https://webia.lip6.fr/~muratetm/diu/Form_data.php" target="_blank">
+			
+			<!---------------------------------------------->
+			<!-- Partie 1 : Renseignements administratifs -->
+			<!---------------------------------------------->
+			<p>Renseignements administratifs</p>
+			<!-- Nom -->
+			<div>
+				<label for="Nom">Nom&nbsp;</label>
+				<input name="Nom" size="50" maxlength="40" type="text">
+			</div>
+			<!-- Prénom -->
+			<div>
+				<label for="Prenom">Prénom&nbsp;</label>
+				<input name="Prenom" size="50" maxlength="30" type="text">
+			</div>
+			<!-- Email -->
+			<div>
+				<label for="Email">Email&nbsp;</label>
+				<input name="Email" onfocusin="etatNormal(this)" onfocusout="checkEmail(this)" size="50" maxlength="48" type="text">
+			</div>
+			
+			<!-------------------------------------->
+			<!-- Partie 2 : Options d'inscription -->
+			<!-------------------------------------->
+			<p>Options d'inscription</p>
+			<!-- Présence dinner Gala -->
+			<div>
+				<label for="Dejeuner">Présence au déjeuner&nbsp;</label>
+				<select name="Dejeuner"> 
+					<option value="Non">Non</option>
+					<option value="Oui">Oui</option>
+				</select>
+			</div>
+			<!-- Précisions restrictions alimentaires -->
+			<div>
+				<label for="Restrictions">Merci d'indiquer vos restrictions alimentaires&nbsp;</label>
+				<input name="Restrictions" size="50" maxlength="60" type="text">
+			</div>
+			
+			<!--------------------------->
+			<!-- Partie 3 : Validation -->
+			<!--------------------------->
+			<input value="Valider l'inscription" type="submit">
+		</form>
+	</body>
+</html>
+
+
+<!---------EXERCICE 7--------------->
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Exemple de formulaire</title>
+		<meta charset="utf-8">
+    <script src="Form_scripts.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<!-- Titre du formulaire -->
+		<p>Formulaire d'inscription</p>
+
+		<form name="formulaire" method="get" action="https://webia.lip6.fr/~muratetm/diu/Form_data.php" target="_blank">
+			
+			<!---------------------------------------------->
+			<!-- Partie 1 : Renseignements administratifs -->
+			<!---------------------------------------------->
+			<p>Renseignements administratifs</p>
+			<!-- Nom -->
+			<div>
+				<label for="Nom">Nom&nbsp;</label>
+				<input name="Nom" class="Required" size="50" maxlength="40" type="text">
+			</div>
+			<!-- Prénom -->
+			<div>
+				<label for="Prenom">Prénom&nbsp;</label>
+				<input name="Prenom" class="Required" size="50" maxlength="30" type="text">
+			</div>
+			<!-- Email -->
+			<div>
+				<label for="Email">Email&nbsp;</label>
+				<input name="Email" class="Required" onfocusin="etatNormal(this)" onfocusout="checkEmail(this)" size="50" maxlength="48" type="text">
+			</div>
+			
+			<!-------------------------------------->
+			<!-- Partie 2 : Options d'inscription -->
+			<!-------------------------------------->
+			<p>Options d'inscription</p>
+			<!-- Présence dinner Gala -->
+			<div>
+				<label for="Dejeuner">Présence au déjeuner&nbsp;</label>
+				<select name="Dejeuner"> 
+					<option value="Non">Non</option>
+					<option value="Oui">Oui</option>
+				</select>
+			</div>
+			<!-- Précisions restrictions alimentaires -->
+			<div>
+				<label for="Restrictions">Merci d'indiquer vos restrictions alimentaires&nbsp;</label>
+				<input name="Restrictions" size="50" maxlength="60" type="text">
+			</div>
+			
+			<!--------------------------->
+			<!-- Partie 3 : Validation -->
+			<!--------------------------->
+			<input onclick="valider()" value="Valider l'inscription" type="button">
+		</form>
+	</body>
+</html>
