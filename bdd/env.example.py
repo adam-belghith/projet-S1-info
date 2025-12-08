@@ -1,0 +1,5 @@
+PG_PASSWORD="password"
+PG_USER="username"
+PG_HOST="127.0.0.1"
+PG_PORT="5432"
+PG_DB="projet"
