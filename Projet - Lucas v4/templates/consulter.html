@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <script src="static/js/consulter.js"></script> <!-- Cette ligne à cette place ne sert à rien ? -->
+
+	<!-- Importation des bibliothéques/modules nécessaires pour faire un graphique -->
+	<link href="StyleEx1.css" rel="stylesheet" type="text/css"> <!-- Permet de prendre un fichier css qui se trouve en ligne ? -->
+	<script src="https://code.highcharts.com/highcharts.js"></script> <!-- sert a afficher le graphique -->
+	<script src="https://code.highcharts.com/modules/series-label.js"></script> <!-- sert à mettre des noms aux courbes -->
+	<script src="https://code.highcharts.com/modules/exporting.js"></script> <!-- JSP -->
+	<script src="https://code.highcharts.com/modules/export-data.js"></script> <!-- JSP -->
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> <!-- JSP -->
+    </head>
+    <body>
+        <h1>Ici sera la consultation des données</h1>
+
+        <div>Voila votre data (depuis serveur.py) : {{data}} </div>
+
+	<figure class="highcharts-figure">
+	  <div id="container"></div>
+          <script src="static/js/consulter.js"></script> <!-- Je ne sais pas comment donner en argument notre data donc les données représentées sont à but d'illustrations -->>
+	  <p class="highcharts-description">
+	    First Example from https://www.highcharts.com/demo/line-basic
+	  </p>
+	</figure>
+	
+        <div>
+            Aller à cette page : 
+            <a href="http://127.0.0.1:8000/" > 
+                <button> /</button>
+            </a>
+            
+	</div>
+    </body>
+</html>
+
+
+
+
