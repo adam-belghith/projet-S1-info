@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #FFF;
+    margin: 0;
+}
+
+nav {
+    height: 72px;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center; /* Aligne verticalement les liens */
+    gap: 24px;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:nth-child(1) {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #000;
+}
+
+nav a:nth-child(n+2) {
+    font-weight: 500;
+    font-size: 0.9rem; /* Corrigé l'espace */
+    color: #4b5563;
+}
+
+nav a:nth-child(2) {
+    margin-left: auto;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    align-items: center;
+}
+
+.wrapper h1 {
+    font-size: 72px;
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin: 20px 0;
+    color: #000;
+}
+
+.wrapper p {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 20px 0;
+    color: #4b5563; /* Gris pour plus d'harmonie */
+}
+
+.boutons {
+    margin-top: 32px;
+}
+
+.btn-primary {
+    background: #000;
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.btn-secondary {
+    border: 1px solid #ddd;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    color: #000;
+    margin-left: 15px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* --- PARTIE DROITE : IMAGE ET CAPSULES --- */
+.image-wrapper {
+    position: relative; /* Indispensable pour que les capsules flottent DESSUS */
+    width: 100%;
+    height: 580px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+    background: url("https://cdn.pixabay.com/photo/2025/09/19/20/03/leaf-9843793_1280.jpg") center/cover;
+}
+
+.capsule {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 16px;              /* Augmenté l'écart entre icône et texte */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 16px 24px;      /* Augmenté (était 12px 18px) */
+    border-radius: 24px;     /* Arrondi plus généreux */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    min-width: 220px;        /* Augmenté (était 180px) */
+    z-index: 10;
+    animation: float 4s ease-in-out infinite;
+}
+
+.capsule .icon {
+    font-size: 1.8rem;       /* Augmenté (était ~1.4rem) */
+}
+
+.capsule .info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.capsule .value {
+    font-size: 22px;         /* Augmenté (était 18px) */
+    font-weight: 800;
+    color: #000;
+}
+/* Positions des capsules */
+.cap-temp { top: 10%; left: -30px; }
+.cap-humi { top: 45%; right: -30px;}
+.cap-co2  { bottom: 10%; left: -20px;}

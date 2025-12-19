@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Monitoring Environnemental</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="static/dashboard.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/">Assistant Climatique</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/config">Configuration</a>
+    </nav>
+    <div class="container">
+        <div class="chart-grid">
+            <div class="chart-box">
+                <div id="temp_chart" style="height: 400px;"></div>
+            </div>
+            <div class="chart-box">
+                <div id="humi_chart" style="height: 400px;"></div>
+            </div>
+            <div class="chart-box full-width">
+                <div id="air_quality_chart" style="height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Highcharts.setOptions({
+            time: {
+                useUTC: false // Force l'affichage selon l'heure locale de l'ordinateur
+            }
+        });
+        const chartData = {{ chart_data| tojson }}; // convertit les données en objet JavaScript
+
+        const commonOptions = {
+            chart: {
+                zooming: { type: 'x' },
+                backgroundColor: '#ffffff',
+                style: { fontFamily: 'Plus Jakarta Sans' }
+            },
+            xAxis: [{ type: 'datetime', crosshair: true }],
+            tooltip: {
+                shared: true,
+                backgroundColor: '#ffffff',
+                borderRadius: 12,
+                borderWidth: 1,
+                borderColor: '#eee'
+            },
+            credits: { enabled: false },
+            plotOptions: { series: { marker: { enabled: false } } }
+        };
+
+        // --- 1. TEMPÉRATURE ---
+        Highcharts.chart('temp_chart', {
+            ...commonOptions,
+            title: { text: '🌡️ Température' },
+            yAxis: { title: { text: 'Température (°C)' }, labels: { format: '{value}°C' } },
+            series: [
+                {
+                    name: 'Température Interieur',
+                    type: 'spline',
+                    color: '#ff4b5c',
+                    lineWidth: 3,
+                    data: chartData.sensor.ts.map((t, i) => [t, chartData.sensor.temp[i]])
+                },
+                {
+                    name: 'Temperature extérieure (Météo-France)',
+                    type: 'spline',
+                    color: '#ff4b5c',
+                    dashStyle: 'ShortDash',
+                    opacity: 0.3,
+                    data: chartData.meteo.ts.map((t, i) => [t, chartData.meteo.temp[i]])
+                }
+            ]
+        });
+
+        // --- 2. HUMIDITÉ ---
+        Highcharts.chart('humi_chart', {
+            ...commonOptions,
+            title: { text: '💧 Humidité' },
+            yAxis: { title: { text: 'Humidité (%)' }, labels: { format: '{value}%' }, max: 100 },
+            series: [
+                {
+                    name: 'Humidité Intérieure',
+                    type: 'column',
+                    color: '#3498db',
+                    borderRadius: 4,
+                    data: chartData.sensor.ts.map((t, i) => [t, chartData.sensor.humi[i]])
+                },
+                {
+                    name: 'Humidité extérieure (Météo-France)',
+                    type: 'column',
+                    color: '#aecadb',
+                    borderRadius: 4,
+                    data: chartData.meteo.ts.map((t, i) => [t, chartData.meteo.humi[i]])
+                }
+            ]
+        });
+
+        // --- 3. CO2 ---
+        Highcharts.chart('air_quality_chart', {
+            ...commonOptions,
+            title: { text: '☁️ Qualité de l\'Air : Concentration CO₂' },
+            yAxis: {
+                title: { text: 'CO₂ (ppm)' },
+                plotLines: [{ value: 1000, color: '#e74c3c', dashStyle: 'shortdash', width: 2, label: { text: 'Aérer' } }]
+            },
+            series: [{
+                name: 'CO₂ Local',
+                type: 'area',
+                color: '#8e44ad',
+                fillColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                    stops: [[0, 'rgba(142, 68, 173, 0.3)'], [1, 'rgba(142, 68, 173, 0)']]
+                },
+                data: chartData.sensor.ts.map((t, i) => [t, chartData.sensor.co2[i]])
+            }]
+        });
+    </script>
+</body>
+
+</html>

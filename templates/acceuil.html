@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant Climatique</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Assistant Climatique</a>
+        <a href="/dashboard">Dashboard</a> 
+        <a href="/config">Configuration</a>
+    </nav>
+
+    <div class="wrapper">
+        <div> 
+            <div class="text">
+                <h1>Assistant climatique votre allié du quotidien</h1>
+                <p>Surveillance en temps réel de votre air intérieur. Gérez vos seuils et automatisez votre maison intelligemment.</p>
+            </div>
+            <div class="boutons">
+                <a href="/dashboard" class="btn-primary">Voir les données</a>
+                <a href="/config" class="btn-secondary">Configuration</a>
+            </div>
+        </div>
+        
+        <div class="image-wrapper">
+            <div class="img"></div>
+
+            <div class="capsule cap-temp">
+                <div class="icon">🌡️</div>
+                <div class="info">  
+                    <span class="value">Température</span>
+                </div>
+            </div>
+
+            <div class="capsule cap-humi">
+                <div class="icon">💧</div>
+                <div class="info">
+                    <span class="value">Humidité</span>
+                </div>
+            </div>
+
+            <div class="capsule cap-co2">
+                <div class="icon">☁️</div>
+                <div class="info">
+                    <span class="value">Qualité de l'air</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
