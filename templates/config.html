@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration | Assistant Climatique</title>
+    <link rel="stylesheet" href="/static/config.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">Assistant Climatique</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/config">Configuration</a>
+    </nav>
+
+    <div class="container">
+        <h1>Configuration</h1>
+        <div class="card">
+            <h3>Ajouter une nouvelle règle</h3>
+            <form action="/config/add" method="post" class="form-group"> <!--envoie les info a la route definie dans api.py-->
+                <select name="type">
+                    <option value="temperature">Température</option>
+                    <option value="humidity">Humidité</option>
+                    <option value="co2">CO2</option>
+                </select>
+                <select name="relation">
+                    <option value=">">Supérieur à (>)</option>
+                    <option value="<">Inférieur à (<)< /option>
+                </select>
+                <input type="number" step="0.1" name="value" placeholder="Ex: 25.0" required>
+                <button type="submit" class="btn-add">Ajouter</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Règles actives</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Capteur</th>
+                        <th>Condition</th>
+                        <th>Seuil</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for check in checks %} <!--boucle pour creer une nouvelle ligne du tableau pour chaque seuil present dans la bdd-->
+                    <tr>
+                        <td class="tag">{{ check[1]|capitalize }}</td>
+                        <td>{{ check[2] }}</td>
+                        <td class="tag">{{ check[3] }}</td>
+                        <td><a href="/admin/delete/{{ check[0] }}" class="btn-del">Supprimer</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
